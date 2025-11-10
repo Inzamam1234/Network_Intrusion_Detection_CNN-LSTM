@@ -18,9 +18,6 @@ __pycache__/
 *.sav
 
 # Ignore dataset folders
-data/
-datasets/
-*.csv
 *.arff
 
 # Ignore database files (logs, sqlite, etc.)
