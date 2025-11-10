@@ -9,8 +9,6 @@ It classifies network traffic into:
 - R2L (Remote-to-Local Attack)
 - U2R (User-to-Root Attack)
 
-Our system works automatically — it monitors live network traffic, analyzes it, and alerts if an attack is detected.
-
 ---
 
 ## 🎯 Project Purpose
@@ -56,7 +54,7 @@ This hybrid approach improves detection accuracy.
 ---
 ## 🔄 Workflow (How the System Works)
 
-1.Capture network packets (Live)
+1.Capture network packets
 
 2.Convert packet data into numerical features
 
@@ -72,7 +70,6 @@ This hybrid approach improves detection accuracy.
 The dashboard shows:
 
 - Current network traffic status
-- Alerts when an attack is detected
 - Attack type (DoS / Probe / R2L / U2R)
 - Timestamp and logging history
 
