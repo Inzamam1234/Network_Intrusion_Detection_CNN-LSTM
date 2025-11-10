@@ -1,0 +1,16 @@
+# Deep Learning IDS Requirements (No Version Constraints)
+
+# Core ML/DL Libraries
+numpy
+pandas
+tensorflow
+scikit-learn
+imbalanced-learn
+
+# Flask Backend
+Flask
+Flask-CORS
+
+# Visualization
+matplotlib
+seaborn

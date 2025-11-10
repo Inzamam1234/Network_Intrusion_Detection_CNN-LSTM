@@ -1,0 +1,55 @@
+# Ignore Python cache / compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.pickle
+*.joblib
+*.cache/
+
+# Ignore ML / DL Model files
+*.h5
+*.keras
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.sav
+
+# Ignore dataset folders
+data/
+datasets/
+*.csv
+*.arff
+
+# Ignore database files (logs, sqlite, etc.)
+*.db
+*.sqlite
+*.sqlite3
+
+# Ignore venv / environment directories
+venv/
+env/
+.venv/
+nids_env/
+
+# Ignore Flask session & secret files
+instance/
+*.env
+.env
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore IDE / editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
