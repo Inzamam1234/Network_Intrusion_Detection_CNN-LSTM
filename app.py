@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import tensorflow as tf
-import keras   # ✅ FIXED: Use Keras 3 directly instead of tf.keras
+from tensorflow import keras   # ✅ FIXED: Use Keras 3 directly instead of tf.keras
 import os
 import json
 from datetime import datetime
@@ -27,7 +27,7 @@ CORS(app)
 # MODERN TENSORFLOW 2.x FOCAL LOSS (Latest API)
 # ============================================================================
 
-@keras.saving.register_keras_serializable()
+@tf.keras.utils.register_keras_serializable()
 class FocalLoss(keras.losses.Loss):
     """Modern Focal Loss implementation using TensorFlow 2.x"""
     
@@ -85,20 +85,12 @@ class IDSPredictor:
             }
             
             # Load models with modern API
-            self.cnn_model = keras.models.load_model(
-                'models/cnn_ids_model.h5',
-                custom_objects=custom_objects,
-                compile=False
-            )
+            self.cnn_model = tf.keras.models.load_model("models/cnn_ids_model.keras")
             
-            self.lstm_model = keras.models.load_model(
-                'models/lstm_ids_model.h5',
-                custom_objects=custom_objects,
-                compile=False
-            )
+            self.lstm_model = tf.keras.models.load_model("models/lstm_ids_model.keras")
             
             # Recompile with modern optimizer
-            optimizer = keras.optimizers.Adam(learning_rate=0.001)
+            optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
             
             self.cnn_model.compile(
                 optimizer=optimizer,
