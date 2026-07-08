@@ -86,13 +86,13 @@ class IDSPredictor:
             
             # Load models with modern API
             self.cnn_model = keras.models.load_model(
-                'models/cnn_ids_model (1).h5',
+                'models/cnn_ids_model.h5',
                 custom_objects=custom_objects,
                 compile=False
             )
             
             self.lstm_model = keras.models.load_model(
-                'models/lstm_ids_model (1).h5',
+                'models/lstm_ids_model.h5',
                 custom_objects=custom_objects,
                 compile=False
             )
@@ -366,6 +366,9 @@ def initialize_app():
     predictor.load_models()
     logger.info("✅ Application initialized successfully")
 
-if __name__ == '__main__':
-    initialize_app()
-    app.run(debug=True, host='0.0.0.0', port=5001, threaded=True)
+# Initialize when imported by Gunicorn
+initialize_app()
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port)
