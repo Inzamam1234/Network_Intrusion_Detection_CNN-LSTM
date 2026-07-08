@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd
 import pickle
 import tensorflow as tf
-from tensorflow import keras   # ✅ FIXED: Use Keras 3 directly instead of tf.keras
 import os
 import json
 from datetime import datetime
@@ -28,7 +27,7 @@ CORS(app)
 # ============================================================================
 
 @tf.keras.utils.register_keras_serializable()
-class FocalLoss(keras.losses.Loss):
+class FocalLoss(tf.keras.losses.Loss):
     """Modern Focal Loss implementation using TensorFlow 2.x"""
     
     def __init__(self, gamma=2.0, alpha=0.25, name='focal_loss'):
@@ -37,7 +36,7 @@ class FocalLoss(keras.losses.Loss):
         self.alpha = alpha
     
     def call(self, y_true, y_pred):
-        epsilon = keras.backend.epsilon()
+        epsilon = tf.keras.backend.epsilon()
         y_pred = tf.clip_by_value(y_pred, epsilon, 1.0 - epsilon)
         
         # Calculate cross entropy
@@ -87,14 +86,14 @@ class IDSPredictor:
             # Load models with modern API
             self.cnn_model = tf.keras.models.load_model(
                     "models/cnn_ids_model.h5",
-                    custom_objects={"FocalLoss": FocalLoss},
-                    compile=False
+                    compile=False,
+                    safe_mode=False
             )
             
             self.lstm_model = tf.keras.models.load_model(
                     "models/lstm_ids_model.h5",
-                    custom_objects={"FocalLoss": FocalLoss},
-                    compile=False
+                    compile=False,
+                    safe_mode=False
             )
             
             # Recompile with modern optimizer
