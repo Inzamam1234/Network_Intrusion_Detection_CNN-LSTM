@@ -126,7 +126,6 @@ class IDSPredictor:
             self.loaded = True
             logger.info("✅ Models loaded successfully with TensorFlow 2.x")
             logger.info(f"TensorFlow version: {tf.__version__}")
-            logger.info(f"Keras version: {keras.__version__}")
             logger.info(f"Classes: {self.label_encoder.classes_}")
             logger.info(f"GPU Available: {len(tf.config.list_physical_devices('GPU')) > 0}")
             
@@ -290,7 +289,7 @@ def health_check():
         'status': 'healthy',
         'models_loaded': predictor.loaded,
         'tensorflow_version': tf.__version__,
-        'keras_version': keras.__version__,
+        'keras_version': tf.keras.__version__,
         'gpu_available': gpu_available,
         'timestamp': datetime.now().isoformat()
     })
