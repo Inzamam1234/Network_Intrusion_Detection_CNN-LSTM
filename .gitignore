@@ -4,8 +4,14 @@ __pycache__/
 .ipynb_checkpoints/
 
 venv/
+venv311/
 .env
 
 Dataset/
 
+.
+venv/
+venv311/
+__pycache__/
+*.pyc
 .DS_Store
