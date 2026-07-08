@@ -85,15 +85,13 @@ class IDSPredictor:
             
             # Load models with modern API
             self.cnn_model = tf.keras.models.load_model(
-                    "models/cnn_ids_model.h5",
-                    compile=False,
-                    safe_mode=False
+                    "models/cnn_ids_model.keras",
+                    compile=False
             )
             
             self.lstm_model = tf.keras.models.load_model(
-                    "models/lstm_ids_model.h5",
-                    compile=False,
-                    safe_mode=False
+                    "models/lstm_ids_model.keras",
+                    compile=False
             )
             
             # Recompile with modern optimizer
